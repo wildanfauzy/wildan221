@@ -1,0 +1,13 @@
+{
+  "name": "wildan-collab",
+  "version": "1.0.0",
+  "description": "Form collab Genshin Impact - kirim karakter & gambar dari semua region Teyvat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^2.2.0"
+  }
+}

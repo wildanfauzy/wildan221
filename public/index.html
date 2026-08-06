@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collab Teyvat — Wildan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>⚔️ Collab Teyvat</h1>
+    <p>Mau ikut collab bareng Wildan? Pilih karaktermu dari semua region di Teyvat, kirim gambarnya, dan ayo kita bikin karya bareng!</p>
+  </header>
+
+  <main>
+    <section class="card" id="form-section">
+      <h2>Daftar Ikut Collab</h2>
+      <form id="collab-form" action="/api/submit" method="POST" enctype="multipart/form-data">
+        <label>Nama / Alias <span>*</span>
+          <input type="text" name="name" required placeholder="Misal: AetherLover">
+        </label>
+
+        <label>Akun sosial (opsional)
+          <input type="text" name="social" placeholder="IG / X / Twitter / Discord">
+        </label>
+
+        <label>Region <span>*</span>
+          <select name="region" id="region" required>
+            <option value="">-- pilih region --</option>
+          </select>
+        </label>
+
+        <label>Karakter <span>*</span>
+          <select name="character" id="character" required>
+            <option value="">-- pilih region dulu --</option>
+          </select>
+        </label>
+
+        <label>Gambar karakter <span>*</span>
+          <input type="file" name="image" accept="image/*" required>
+        </label>
+
+        <label>Catatan / ide buat kolab (opsional)
+          <textarea name="note" rows="3" placeholder="Mau kasih ide atau gaya gambar?"></textarea>
+        </label>
+
+        <button type="submit" id="submit-btn">Kirim 🚀</button>
+      </form>
+      <p class="hint">Maksimal 10MB, format JPG/PNG/WebP/GIF.</p>
+    </section>
+
+    <section class="card">
+      <h2>Yang Sudah Daftar</h2>
+      <div id="gallery" class="gallery"><p class="loading">Memuat...</p></div>
+    </section>
+  </main>
+
+  <footer>© 2026 Wildan · Fan collab Teyvat</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
