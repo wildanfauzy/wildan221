@@ -15,6 +15,7 @@
   <main>
     <section class="card" id="form-section">
       <h2>Daftar Ikut Collab</h2>
+      <p class="sub">Pilih karakter, elemen & region dari seluruh Teyvat, unggah fotomu, dan ikut collab bareng Wildan!</p>
       <form id="collab-form" action="/api/submit" method="POST" enctype="multipart/form-data">
         <label>Nama / Alias <span>*</span>
           <input type="text" name="name" required placeholder="Misal: AetherLover">
@@ -29,6 +30,7 @@
             <option value="">-- pilih region --</option>
           </select>
         </label>
+        <input type="hidden" name="element" id="element" value="">
 
         <label>Karakter <span>*</span>
           <select name="character" id="character" required>
@@ -36,8 +38,20 @@
           </select>
         </label>
 
-        <label>Gambar karakter <span>*</span>
-          <input type="file" name="image" accept="image/*" required>
+        <label>Karakter in-game <span>*</span>
+          <input type="file" name="charImg" accept="image/*" required>
+        </label>
+
+        <label>Foto profil (hasil edit di AM) <span>*</span>
+          <input type="file" name="profileImg" accept="image/*" required>
+        </label>
+
+        <label>Foto selfie <span>*</span>
+          <input type="file" name="selfie" accept="image/*" required>
+        </label>
+
+        <label>Afinitas <span>*</span>
+          <input type="text" name="affinity" required placeholder="contoh: Piro, Hydro, Dendro, ...">
         </label>
 
         <label>Catatan / ide buat kolab (opsional)
@@ -46,7 +60,7 @@
 
         <button type="submit" id="submit-btn">Kirim 🚀</button>
       </form>
-      <p class="hint">Maksimal 10MB, format JPG/PNG/WebP/GIF.</p>
+      <p class="hint">Tiap gambar maksimal 10MB, format JPG/PNG/WebP/GIF.</p>
     </section>
 
     <section class="card">

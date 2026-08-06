@@ -61,6 +61,7 @@ main {
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 .card h2 { margin-top: 0; font-size: 1.2rem; color: var(--accent); }
+.card .sub { margin-top: -6px; margin-bottom: 16px; color: var(--muted); font-size: .9rem; }
 
 form label {
   display: block;
@@ -115,26 +116,50 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   border: 1px solid #232b4a;
   border-radius: 12px;
   overflow: hidden;
-  text-align: center;
+  padding: 12px;
 }
-.entry img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-  background: #0a0e1d;
-}
-.entry .info { padding: 10px; }
-.entry .info .char { font-weight: 700; color: var(--accent); }
-.entry .info .meta { font-size: .8rem; color: var(--muted); }
-.entry .info .tag {
+.entry .char { font-weight: 700; color: var(--accent); font-size: 1rem; }
+.entry .meta { font-size: .82rem; color: var(--muted); margin-top: 2px; }
+.entry .meta b { color: var(--text); }
+.entry .note { font-style: italic; }
+.entry .tag {
   display: inline-block;
-  margin-top: 6px;
-  padding: 2px 8px;
+  margin-top: 8px;
+  padding: 2px 10px;
   border-radius: 20px;
-  font-size: .72rem;
+  font-size: .74rem;
   border: 1px solid var(--accent2);
   color: var(--accent2);
+}
+.entry .imgs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+.entry .imgbox {
+  position: relative;
+  background: #0a0e1d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.entry .imgbox img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.entry .imglabel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  font-size: .62rem;
+  text-align: center;
+  background: rgba(0,0,0,.6);
+  color: #dfe6f5;
+  padding: 2px 4px;
+}
+@media (max-width: 720px) {
+  .gallery { grid-template-columns: 1fr; }
 }
 
 footer {

@@ -48,21 +48,33 @@ app.get("/api/submissions", (req, res) => {
   res.json(loadData());
 });
 
-app.post("/api/submit", upload.single("image"), (req, res) => {
+app.post(
+  "/api/submit",
+  upload.fields([
+    { name: "charImg", maxCount: 1 },
+    { name: "profileImg", maxCount: 1 },
+    { name: "selfie", maxCount: 1 },
+  ]),
+  (req, res) => {
   try {
-    const { name, social, region, character, note } = req.body;
+    const { name, social, region, character, element, affinity, note } = req.body;
     if (!name || !region || !character) {
       throw new Error("Nama, region, dan karakter wajib diisi");
     }
     const data = loadData();
+    const img = (f) => (req.files && req.files[f] && req.files[f][0]) ? "/uploads/" + req.files[f][0].filename : null;
     const entry = {
       id: Date.now().toString(36),
       name: name.trim(),
       social: (social || "").trim(),
       region,
       character,
+      element: (element || "").trim(),
+      affinity: (affinity || "").trim(),
       note: (note || "").trim(),
-      image: req.file ? "/uploads/" + req.file.filename : null,
+      charImg: img("charImg"),
+      profileImg: img("profileImg"),
+      selfie: img("selfie"),
       createdAt: new Date().toISOString(),
     };
     data.push(entry);
