@@ -1,0 +1,15 @@
+{
+  "siteTitle": "Collab Genshin Impact",
+  "siteTagline": "Ikut collab bareng Wildan! Pilih karaktermu, kirim fotomu, dan kita bikin karya bareng. ✨",
+  "maxCharacters": 3,
+  "imagesPerChar": 6,
+  "fields": {
+    "name":     { "label": "Nama / Alias", "required": true,  "enabled": true },
+    "social":   { "label": "Akun sosial (IG / X / Discord)", "required": false, "enabled": true },
+    "note":     { "label": "Catatan / ide buat collab (opsional)", "required": false, "enabled": true },
+    "affinity": { "label": "Afinitas", "required": true,  "enabled": true },
+    "charIngame": { "label": "Foto karakter in-game", "required": true, "enabled": true, "multiple": true },
+    "profile":    { "label": "Foto profil (hasil edit di AM)", "required": true, "enabled": true, "multiple": false },
+    "selfie":     { "label": "Foto selfie", "required": true, "enabled": true, "multiple": false }
+  }
+}

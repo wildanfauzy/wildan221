@@ -3,73 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collab Teyvat — Wildan</title>
+  <title>Collab Genshin Impact — Wildan</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="hero">
-    <h1>⚔️ Collab Teyvat</h1>
-    <p>Mau ikut collab bareng Wildan? Pilih karaktermu dari semua region di Teyvat, kirim gambarnya, dan ayo kita bikin karya bareng!</p>
+    <div class="hero-inner">
+      <h1 id="site-title">⚔️ Collab Genshin</h1>
+      <p id="site-tagline">Ikut collab bareng Wildan!</p>
+    </div>
   </header>
 
+  <!-- ===== Showcase karakter (pajangan) ===== -->
+  <section class="showcase" id="showcase">
+    <div class="sec-head">
+      <h2>Pilih Karaktermu</h2>
+      <p>Tap salah satu karakter untuk melihat infonya</p>
+    </div>
+    <div class="region-tabs" id="region-tabs"></div>
+    <div class="char-grid" id="char-grid"></div>
+  </section>
+
   <main>
+    <!-- ===== Form collab ===== -->
     <section class="card" id="form-section">
       <h2>Daftar Ikut Collab</h2>
-      <p class="sub">Pilih karakter, elemen & region dari seluruh Teyvat, unggah fotomu, dan ikut collab bareng Wildan!</p>
-      <form id="collab-form" action="/api/submit" method="POST" enctype="multipart/form-data">
-        <label>Nama / Alias <span>*</span>
-          <input type="text" name="name" required placeholder="Misal: AetherLover">
-        </label>
+      <p class="sub" id="form-sub">Isi data dan kirim fotomu 🚀</p>
+      <form id="collab-form" novalidate>
+        <!-- field dinamis global akan dirender lewat JS -->
+        <div id="global-fields"></div>
 
-        <label>Akun sosial (opsional)
-          <input type="text" name="social" placeholder="IG / X / Twitter / Discord">
-        </label>
+        <div class="char-blocks" id="char-blocks"></div>
 
-        <label>Region <span>*</span>
-          <select name="region" id="region" required>
-            <option value="">-- pilih region --</option>
-          </select>
-        </label>
-        <input type="hidden" name="element" id="element" value="">
+        <div class="add-char-row">
+          <button type="button" id="add-char-btn" class="btn-ghost">＋ Tambah karakter</button>
+        </div>
 
-        <label>Karakter <span>*</span>
-          <select name="character" id="character" required>
-            <option value="">-- pilih region dulu --</option>
-          </select>
-        </label>
-
-        <label>Karakter in-game <span>*</span>
-          <input type="file" name="charImg" accept="image/*" required>
-        </label>
-
-        <label>Foto profil (hasil edit di AM) <span>*</span>
-          <input type="file" name="profileImg" accept="image/*" required>
-        </label>
-
-        <label>Foto selfie <span>*</span>
-          <input type="file" name="selfie" accept="image/*" required>
-        </label>
-
-        <label>Afinitas <span>*</span>
-          <input type="text" name="affinity" required placeholder="contoh: Piro, Hydro, Dendro, ...">
-        </label>
-
-        <label>Catatan / ide buat kolab (opsional)
-          <textarea name="note" rows="3" placeholder="Mau kasih ide atau gaya gambar?"></textarea>
-        </label>
-
+        <p class="error-msg" id="form-error" hidden></p>
         <button type="submit" id="submit-btn">Kirim 🚀</button>
       </form>
-      <p class="hint">Tiap gambar maksimal 10MB, format JPG/PNG/WebP/GIF.</p>
+      <p class="hint" id="form-hint"></p>
     </section>
 
-    <section class="card">
+    <!-- ===== Galeri peserta ===== -->
+    <section class="card" id="gallery-section">
       <h2>Yang Sudah Daftar</h2>
+      <div class="region-filter" id="gallery-filter"></div>
       <div id="gallery" class="gallery"><p class="loading">Memuat...</p></div>
     </section>
   </main>
 
-  <footer>© 2026 Wildan · Fan collab Teyvat</footer>
+  <footer>© 2026 Wildan · Fan collab Genshin Impact</footer>
+
+  <!-- Modal info karakter -->
+  <div class="modal" id="char-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Tutup">✕</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox gambar -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" id="lb-close" aria-label="Tutup">✕</button>
+    <img id="lb-img" alt="Foto">
+  </div>
 
   <script src="app.js"></script>
 </body>

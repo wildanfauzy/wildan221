@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Collab — Wildan</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding-bottom: 60px; }
+    .admin-wrap { max-width: 880px; margin: 0 auto; padding: 40px 20px 20px; }
+    .admin-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .admin-top h1 { margin: 0; color: var(--gold); font-size: 1.6rem; }
+    .logout { width: auto; padding: 8px 16px; font-size: .85rem; background: none; border: 1px solid var(--err); color: var(--err); border-radius: 20px; }
+    .login-card { max-width: 360px; margin: 8vh auto; }
+    .login-card button { margin-top: 8px; }
+    .err { color: var(--err); font-size: .9rem; white-space: pre-line; }
+    .count { color: var(--muted); margin-bottom: 16px; }
+    .entry.admin { margin-bottom: 20px; }
+    .admin-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .admin-actions button { width: auto; padding: 8px 16px; font-size: .84rem; border-radius: 8px; }
+    .btn-del { background: linear-gradient(90deg,#ff7a6b,#ff5c5c); }
+    .btn-edit { background: linear-gradient(90deg,#f3d98b,#7ec8f2); color: #10121f; }
+    .btn-save { background: linear-gradient(90deg,#6fd6a0,#4caf7d); color: #10121f; }
+    .btn-cancel { background: none; border: 1px solid var(--border); color: var(--muted); }
+    .edit-form label { display: block; margin-bottom: 12px; font-size: .85rem; color: var(--muted); }
+    .edit-form textarea, .edit-form input { margin-top: 5px; }
+    .edit-charcard { border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px; background: rgba(13,18,38,.5); }
+    .edit-form .imgs-edit { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .edit-form .imgs-edit img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+    .lightbox, .modal { z-index: 60; }
+  </style>
+</head>
+<body>
+  <div id="login-view" hidden>
+    <div class="card login-card">
+      <h2>🔐 Login Admin</h2>
+      <p class="sub">Halaman ini privat — hanya untuk pemilik</p>
+      <form id="login-form" novalidate>
+        <label>Username <span class="req">*</span>
+          <input type="text" id="login-user" autocomplete="username" required>
+        </label>
+        <label>Password <span class="req">*</span>
+          <input type="password" id="login-pass" autocomplete="current-password" required>
+        </label>
+        <p class="err" id="login-err" hidden></p>
+        <button type="submit">Masuk</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="admin-view" hidden>
+    <div class="admin-wrap">
+      <div class="admin-top">
+        <h1>📥 Inbox Collab</h1>
+        <button class="logout" id="logout-btn">Logout</button>
+      </div>
+      <div class="count" id="count">Memuat...</div>
+      <div id="entries"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" id="lb-close" aria-label="Tutup">✕</button>
+    <img id="lb-img" alt="Foto">
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

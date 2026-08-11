@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "express": "^4.19.2",
+    "express-session": "^1.19.0",
+    "genshin-db": "^5.2.12",
     "multer": "^2.2.0"
   }
 }
